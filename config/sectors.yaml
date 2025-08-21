@@ -1,0 +1,11 @@
+# config/sectors.yaml
+europages_wine:
+  source: "europages"
+  base_url: "https://www.europages.co.uk"
+  search_url: "https://www.europages.co.uk/companies/wine.html"
+  max_pages: 5
+  selectors:
+    pagination: "a[aria-label='Next page']"
+    profile_links: "a[href*='/companies/']"
+    company_name: "h1"
+    country: "span.country"
