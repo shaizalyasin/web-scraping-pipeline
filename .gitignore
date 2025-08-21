@@ -205,3 +205,9 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Project specific directories
+# We don't want to push the data we scrape to GitHub!
+data/
+logs/
+
