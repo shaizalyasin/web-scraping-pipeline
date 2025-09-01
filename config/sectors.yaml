@@ -1,11 +1,58 @@
-# config/sectors.yaml
 europages_wine:
   source: "europages"
   base_url: "https://www.europages.co.uk"
-  search_url: "https://www.europages.co.uk/companies/wine.html"
+
+  # Search
+  search_url: "https://www.europages.co.uk/en/products?isPserpFirst=1&q=wine"
   max_pages: 5
+
+  # URL pattern
+  url_patterns:
+    product_url: '/en/company/[^/]+-\d+/products/[^/]+-\d+'
+
+  # CSS selectors
   selectors:
-    pagination: "a[aria-label='Next page']"
-    profile_links: "a[href*='/companies/']"
-    company_name: "h1"
-    country: "span.country"
+    product_cards: "[data-test='product']"
+    product_links: "a[href*='/en/company/'][href*='/products/']"
+    website_button: "a.website-button[href^='http']"
+    company_name: "a.company-name"
+    country: "div.flex.gap-1.items-center.mt-0.5 span:nth-of-type(2)"
+
+  # email scrapping
+  email:
+    # irrelevant emails.
+    ignore_domains:
+      - "gmail.com"
+      - "yahoo.com"
+      - "hotmail.com"
+      - "outlook.com"
+      - "europages.com"
+      - "sentry.wixpress.com"
+      - "sentry-next.wixpress.com"
+      - "wixpress.com"
+      - "sentry.io"
+      - "google.com"
+      - "domaine.com"
+      - "email"
+
+    # common paths to crawl on a company's website
+    crawl_paths:
+      - "/"
+      - "/contact"
+      - "/contact-us"
+      - "/about"
+      - "/kontakt"
+      - "/impressum"
+      - "/ueber-uns"
+      - "/contacto"
+      - "/quienes-somos"
+      - "/sobre-nosotros"
+      - "/contatti"
+      - "/chi-siamo"
+      - "/azienda"
+      - "/contato"
+      - "/contatos"
+      - "/sobre"
+      - "/nous-contacter"
+      - "/a-propos"
+    max_pages_per_site: 3

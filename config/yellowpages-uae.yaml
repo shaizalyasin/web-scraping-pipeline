@@ -1,0 +1,43 @@
+yellowpages_uae:
+  source: "yellowpages-uae"
+  base_url: "https://www.yellowpages-uae.com/"
+  max_pages: 5
+
+  # URL patterns
+  url_patterns:
+    profile_url: '/uae/[^/]+-\d+'    # /uae/1001-events-fz-llc-149497
+
+  # CSS selectors
+  selectors:
+    profile_cards: "div.listing-item"           # Container for each company listing on the category page
+    profile_links: 'div.text-xl.font-bold a.flex[href^="/"]'        # company profile
+    company_name: "h2.text-xl.font-bold"        # Company name
+    city: "div.grid.grid-cols-2 span:nth-of-type(2)"  # City name
+    website_button: "button[title][data-url]"  # Website on profile page
+
+  # email scrapping
+  email:
+    # irrelevant emails.
+    ignore_domains:
+      - "yellowpages-uae.com"
+      - "google.com"
+      - "facebook.com"
+      - "linkedin.com"
+      - "gmail.com"
+      - "yahoo.com"
+      - "hotmail.com"
+      - "outlook.com"
+      - "sentry.wixpress.com"
+      - "sentry-next.wixpress.com"
+      - "wixpress.com"
+      - "sentry.io"
+      - "google.com"
+      - "email.com"
+
+    # common paths to crawl on a company's website
+    crawl_paths:
+      - "/"
+      - "/contact"
+      - "/contact-us"
+      - "/about"
+    max_pages_per_site: 3
